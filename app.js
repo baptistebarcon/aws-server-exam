@@ -8,10 +8,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+    host: 'database-2.cx2kswam0856.eu-west-3.rds.amazonaws.com',  // Remplacez par l'endpoint de votre instance RDS
+    user: 'admin',      // Remplacez par votre nom d'utilisateur
+    password: '.C|Qhe!V}fu~WPjvw?x5N7O}*v5x',  // Remplacez par votre mot de passe
+    database: 'database-2',     // Remplacez par le nom de votre base de données
+    port: 3306                  // Spécifiez le port explicitement
 });
 
 db.connect((err) => {
@@ -22,7 +23,6 @@ db.connect((err) => {
     console.log('Connected to the database');
 });
 
-// CRUD operations
 app.get('/users', (req, res) => {
     db.query('SELECT * FROM users', (err, results) => {
         if (err) {
