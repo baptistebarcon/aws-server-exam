@@ -23,6 +23,10 @@ db.connect((err) => {
     console.log('Connected to the database');
 });
 
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+
 app.get('/users', (req, res) => {
     db.query('SELECT * FROM users', (err, results) => {
         if (err) {
